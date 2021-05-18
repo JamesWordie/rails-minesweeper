@@ -7,6 +7,18 @@
       <p>If you land on a mind its gameover!</p>
       <p>Or if you win, then congrats!</p>
   </div>
+  <div class="buttons">
+    <button>Start</button>
+    <button>Reset</button>
+  </div>
+  <div class="score">Local Storage Scores Go Here</div>
+  <div class="controls">
+    <label for="grid_size">Grid Size (10-30):</label>
+    <input id="grid_size" type="range" name="grid_size" min="10" max="30" value="10" data-sizing="px">
+
+    <label for="mine_frequency">Mine Frequency (0.1-0.9):</label>
+    <input id="mine_frequency" type="range" name="mine_frequency" min="0.1" max="0.9" value="10" data-sizing="px">
+  </div>
   <table>
     <tbody id="minesweeper">
 

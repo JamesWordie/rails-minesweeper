@@ -3,21 +3,23 @@
 const GRID = 15;
 const MINE_FREQUENCY = 0.2;
 
+//
 const surrounding = (td, offsetX, offsetY) => {
   const column = td.cellIndex;
   const row = td.parentElement.rowIndex;
   return document.querySelector(`[data-column="${column + offsetX}"][data-row="${row + offsetY}"]`);
 }
 
+// function to search the surrounding cells for mines
 const increaseAdjacent = (td, offsetX, offsetY) => {
   const n = surrounding(td, offsetX, offsetY);
   if (n && n.classList.contains('has-mine')) {
     return 1;
   }
-
   return 0;
 }
 
+//
 const open = (square) => {
   let mines = 0;
 
@@ -53,6 +55,7 @@ const open = (square) => {
   return mines;
 };
 
+// function to open a square either returning you hit a mine or you open the tile
 const openSquare = () => {
   const square = event.currentTarget;
   if (square.classList.contains('has-mine')) {
@@ -66,6 +69,7 @@ const openSquare = () => {
   };
 };
 
+// add the class of flagged to a cell which applies the classlist 'flagged'
 const flagSquare = (event) => {
   event.preventDefault();
   const square = event.currentTarget;
@@ -88,6 +92,7 @@ const makeGrid = () => {
   events();
 }
 
+// function to set the dataset row and column of each cell, also has event listeners for click and flagging
 const events = () => {
   document.querySelectorAll('#minesweeper td').forEach((td) => {
     td.dataset.column = td.cellIndex;
