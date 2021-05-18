@@ -3,6 +3,31 @@
 const GRID = 10;
 const MINE_FREQUENCY = 0.2;
 
+const open = (square) => {
+
+};
+
+const openSquare = () => {
+  const square = event.currentTarget;
+  if (square.classList.contains('has-mine')) {
+    document.querySelectorAll('.has-mine').forEach((cell) => {
+      cell.classList.remove('has-mine', 'unopened');
+      cell.classList.add('mine');
+    });
+    alert('You Lost ☹️!');
+  } else {
+    open(square);
+  };
+};
+
+const flagSquare = (event) => {
+  event.preventDefault();
+  const square = event.currentTarget;
+  if (square.classList.contains('unopened')) {
+    square.classList.add('flagged');
+  };
+};
+
 // make the grid using javascript, inputted into the table html
 const makeGrid = () => {
   const minesweeper = document.querySelector('#minesweeper');
@@ -11,9 +36,24 @@ const makeGrid = () => {
     row.dataset.row = x;
     for (let y = 0; y < GRID; y += 1) {
       row.insertAdjacentHTML('beforeend', `<td class="unopened" data-column="${y}"></td>`);
-    }
+    };
     minesweeper.append(row);
-  }
+  };
+  events();
+}
+
+const events = () => {
+  document.querySelectorAll('#minesweeper td').forEach((td) => {
+    td.dataset.column = td.cellIndex;
+    td.dataset.row = td.parentElement.rowIndex;
+
+    if (Math.random() <= MINE_FREQUENCY) {
+      td.classList.add('has-mine');
+    };
+
+    td.addEventListener('click', openSquare);
+    td.addEventListener('dblclick', flagSquare);
+  });
 }
 
 export { makeGrid }

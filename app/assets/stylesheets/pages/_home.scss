@@ -18,6 +18,47 @@ table #minesweeper td {
   height: 80vh;
 }
 
+td.unopened {
+  background: url('unopened.svg');
+  cursor: pointer;
+}
+td.opened {
+  background: url('opened.svg');
+}
+td.flagged {
+  background: url('flag.svg');
+}
+td.question {
+  background: url('question.svg');
+}
+td.mine {
+  background: url('mine.png');
+}
+td.mine-neighbour-1 {
+  background: url('1.svg');
+}
+td.mine-neighbour-2 {
+  background: url('2.svg');
+}
+td.mine-neighbour-3 {
+  background: url('3.svg');
+}
+td.mine-neighbour-4 {
+  background: url('4.svg');
+}
+td.mine-neighbour-5 {
+  background: url('5.svg');
+}
+td.mine-neighbour-6 {
+  background: url('6.svg');
+}
+td.mine-neighbour-7 {
+  background: url('7.svg');
+}
+td.mine-neighbour-8 {
+  background: url('8.svg');
+}
+
 @media (max-width: 762px) {
   table #minesweeper td {
     width: 32px;
