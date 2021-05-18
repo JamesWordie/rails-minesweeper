@@ -3,8 +3,53 @@
 const GRID = 10;
 const MINE_FREQUENCY = 0.2;
 
-const open = (square) => {
+const surrounding = (td, offsetX, offsetY) => {
+  const column = td.cellIndex;
+  const row = td.parentElement.rowIndex;
+  return document.querySelector(`[data-column="${column + offsetX}"][data-row="${row + offsetY}"]`);
+}
 
+const increaseAdjacent = (td, offsetX, offsetY) => {
+  const n = surrounding(td, offsetX, offsetY);
+  if (n && n.classList.contains('has-mine')) {
+    return 1;
+  }
+
+  return 0;
+}
+
+const open = (square) => {
+  let mines = 0;
+
+  for (let i = -1; i <= 1; i += 1) {
+    for (let j = -1; j <= 1; j += 1) {
+      if (i !== 0 || j !== 0) {
+        mines += increaseAdjacent(square, i, j);
+      }
+    }
+  }
+
+  if (mines === 0) {
+    square.classList.add('opened');
+  } else {
+    square.classList.add(`mine-neighbour-${mines}`);
+  }
+  square.classList.remove('unopened');
+
+  if (mines === 0) {
+    for (let i = -1; i <= 1; i += 1) {
+      for (let j = -1; j <= 1; j += 1) {
+        if (i !== 0 || j !== 0) {
+          const n = surrounding(square, i, j);
+          if (n && n.classList.contains('unopened')) {
+            open(n);
+          }
+        }
+      }
+    }
+  }
+
+  return mines;
 };
 
 const openSquare = () => {
@@ -52,7 +97,7 @@ const events = () => {
     };
 
     td.addEventListener('click', openSquare);
-    td.addEventListener('dblclick', flagSquare);
+    td.addEventListener('contextmenu', flagSquare);
   });
 }
 
