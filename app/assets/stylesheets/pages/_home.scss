@@ -1,1 +1,26 @@
 // Specific CSS for your home-page
+table #minesweeper {
+  margin: auto;
+  margin-top: 3em;
+  border: 1px solid #999;
+  border-collapse: collapse;
+}
+table #minesweeper td {
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+@media (max-width: 762px) {
+  table #minesweeper td {
+    width: 32px;
+    height: 32px;
+  }
+}
