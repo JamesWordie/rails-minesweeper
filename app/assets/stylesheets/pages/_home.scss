@@ -18,6 +18,7 @@ table #minesweeper td {
   align-items: center;
   height: 100vh;
   flex-direction: column;
+
 }
 
 .banner {
@@ -31,20 +32,20 @@ table #minesweeper td {
 }
 
 td.unopened {
-  background: url('unopened.svg');
+  background: url('https://res.cloudinary.com/dqu728tid/image/upload/v1621361218/unopened.svg');
   cursor: pointer;
 }
 td.opened {
-  background: url('opened.svg');
+  background: url('https://res.cloudinary.com/dqu728tid/image/upload/v1621361218/opened.svg');
 }
 td.flagged {
-  background: url('flag.svg');
+  background: url('https://res.cloudinary.com/dqu728tid/image/upload/v1621361218/flag.svg');
 }
 td.question {
-  background: url('question.svg');
+  background: url('https://res.cloudinary.com/dqu728tid/image/upload/v1621361218/question.svg');
 }
 td.mine {
-  background: url('mine.png');
+  background: url('https://res.cloudinary.com/dqu728tid/image/upload/v1621361219/mine.png');
 }
 td.mine-neighbour-1 {
   text-align: center;
