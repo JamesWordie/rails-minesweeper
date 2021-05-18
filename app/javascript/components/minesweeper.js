@@ -1,6 +1,6 @@
 // defining the grid size and frequency of mines
 // add the option once working for user input to choose frequnecy and size (number or slider - js30 tutorial)
-const GRID = 10;
+const GRID = 15;
 const MINE_FREQUENCY = 0.2;
 
 const surrounding = (td, offsetX, offsetY) => {
@@ -33,6 +33,7 @@ const open = (square) => {
     square.classList.add('opened');
   } else {
     square.classList.add(`mine-neighbour-${mines}`);
+    square.innerText = mines
   }
   square.classList.remove('unopened');
 

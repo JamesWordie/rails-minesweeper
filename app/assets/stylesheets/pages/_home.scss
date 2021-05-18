@@ -9,13 +9,25 @@ table #minesweeper td {
   width: 50px;
   height: 50px;
   background-size: cover;
+  border: 1px solid black;
 }
 
 .container {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  height: 80vh;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.banner {
+  padding: 0 10px;
+  width: 500px;
+  font-family: 'Poppins';
+  h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
 }
 
 td.unopened {
@@ -35,28 +47,52 @@ td.mine {
   background: url('mine.png');
 }
 td.mine-neighbour-1 {
-  background: url('1.svg');
+  text-align: center;
+  font-size: 2rem;
+  color: #0000FF;
+  font-weight: 800;
 }
 td.mine-neighbour-2 {
-  background: url('2.svg');
+  text-align: center;
+  font-size: 2rem;
+  color: #008200;
+  font-weight: 800;
 }
 td.mine-neighbour-3 {
-  background: url('3.svg');
+  text-align: center;
+  font-size: 2rem;
+  color: #FF0000;
+  font-weight: 800;
 }
 td.mine-neighbour-4 {
-  background: url('4.svg');
+  text-align: center;
+  font-size: 2rem;
+  color: #000084;
+  font-weight: 800;
 }
 td.mine-neighbour-5 {
-  background: url('5.svg');
+  text-align: center;
+  font-size: 2rem;
+  color: #840000;
+  font-weight: 800;
 }
 td.mine-neighbour-6 {
-  background: url('6.svg');
+  text-align: center;
+  font-size: 2rem;
+  color: #008284;
+  font-weight: 800;
 }
 td.mine-neighbour-7 {
-  background: url('7.svg');
+  text-align: center;
+  font-size: 2rem;
+  color: #840084;
+  font-weight: 800;
 }
 td.mine-neighbour-8 {
-  background: url('8.svg');
+  text-align: center;
+  font-size: 2rem;
+  color: #757575;
+  font-weight: 800;
 }
 
 @media (max-width: 762px) {
@@ -64,4 +100,8 @@ td.mine-neighbour-8 {
     width: 32px;
     height: 32px;
   }
+  .banner {
+    width: 320px;
+  }
 }
+
