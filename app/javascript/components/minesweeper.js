@@ -34,6 +34,7 @@ const open = (square) => {
     square.classList.add('opened');
   } else {
     square.classList.add(`mine-neighbour-${mines}`);
+    square.classList.add('opened');
     square.innerText = mines
   }
   square.classList.remove('unopened');
@@ -55,8 +56,16 @@ const open = (square) => {
   return mines;
 };
 
+// function to return true for the .every, where it announces if you have won or not
+function checkIfWon(td) {
+  if (td.classList.contains('opened') || td.classList.contains('flagged')) {
+    return true;
+  }
+};
+
 // function to open a square either returning you hit a mine or you open the tile
 const openSquare = () => {
+  const tds = Array.from(document.querySelectorAll('td')).slice(0, (Math.pow(gridSlider.value, 2)));
   const square = event.currentTarget;
   if (square.classList.contains('mine-in-cell')) {
     document.querySelectorAll('.mine-in-cell').forEach((cell) => {
@@ -66,6 +75,9 @@ const openSquare = () => {
     alert('You Lost ☹️!');
   } else {
     open(square);
+  };
+  if (tds.every(checkIfWon)) {
+    alert("Congrats you've won!");
   };
 };
 
