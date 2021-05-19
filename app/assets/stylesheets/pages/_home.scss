@@ -1,10 +1,20 @@
 // Specific CSS for your home-page
+body {
+  background-color: var(--gray-dark);
+  color: white;
+}
+
 table #minesweeper {
   margin: auto;
   margin-top: 3em;
   border: 1px solid #999;
   border-collapse: collapse;
 }
+
+table {
+  margin-bottom: 150px;
+}
+
 table #minesweeper td {
   width: 50px;
   height: 50px;
@@ -16,9 +26,8 @@ table #minesweeper td {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  height: 100vh;
   flex-direction: column;
-
+  min-height: 100vh;
 }
 
 .banner {
@@ -29,6 +38,30 @@ table #minesweeper td {
     font-size: 50px;
     margin-bottom: 20px;
   }
+  p {
+    text-align: center;
+  }
+}
+
+.controls {
+  display: inline-flex;
+  div {
+    padding: 10px;
+    margin: 10px;
+    h3 {
+      text-align: center;
+      background-color: lightslategrey;
+      padding: 5px;
+      border-radius: 3px;
+    }
+  }
+}
+
+.btn {
+  font-size: 24px;
+  padding: 8px 15px;
+  border-radius: 4px;
+  margin: auto 50px;
 }
 
 td.unopened {
@@ -103,6 +136,45 @@ td.mine-neighbour-8 {
   }
   .banner {
     width: 320px;
+  }
+  .controls input {
+    display: block;
+    margin: 20px;
+    position: relative;
+    left: -20px;
+  }
+}
+
+@media (max-width: 562px) {
+  table #minesweeper td {
+    width: 24px;
+    height: 24px;
+  }
+  .banner {
+    width: 320px;
+    h1 {
+      text-align: center;
+    }
+  }
+  .controls input {
+    display: block;
+    margin: 20px;
+    position: relative;
+    left: -20px;
+  }
+
+  .buttons {
+    display: flex;
+  }
+
+  .controls {
+    display: flex;
+    flex-direction: column;
+  }
+  td.mine-neighbour-1, td.mine-neighbour-2, td.mine-neighbour-3,
+  td.mine-neighbour-4, td.mine-neighbour-5, td.mine-neighbour-6,
+  td.mine-neighbour-7, td.mine-neighbour-8 {
+    font-size: 1rem;
   }
 }
 

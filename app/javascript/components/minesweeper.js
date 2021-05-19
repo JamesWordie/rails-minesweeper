@@ -113,11 +113,13 @@ const events = () => {
 
 function setGridSize() {
   let GRID = this.value;
+  document.querySelector('.grid_counter').innerText = GRID;
   return GRID;
 };
 
 function setMineFrequency() {
   let MINE_FREQUENCY = (this.value / 10);
+  document.querySelector('.mine_counter').innerText = MINE_FREQUENCY;
   return MINE_FREQUENCY;
 };
 

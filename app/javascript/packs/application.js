@@ -31,7 +31,7 @@ document.addEventListener('turbolinks:load', () => {
   function pageAction() {
     if (this.name === 'start') {
       makeGrid();
-      this.classList.add('.disabled');
+      this.classList.add('disabled');
     } if (this.name === 'reset') {
       window.location.reload();
     }

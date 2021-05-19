@@ -1,23 +1,28 @@
 <div class="container">
   <div class="banner">
     <h1>Classic Minesweeper</h1>
+      <p>Choose your grid size and mine frequency, then start to begin.</p>
       <p>Left-Click to select a square.</p>
       <p>Right-Click to place a flag, marking a mine.</p>
       <p>The grid number represents the number of adjacent mines.</p>
       <p>If you land on a mind its gameover!</p>
-      <p>Or if you win, then congrats!</p>
   </div>
   <div class="buttons">
-    <button name="start">Start</button>
-    <button name="reset">Reset</button>
+    <button name="start" class="btn btn-success">Start</button>
+    <button name="reset" class="btn btn-danger">Reset</button>
   </div>
   <!-- <div class="score">Local Storage Scores Go Here</div> -->
   <div class="controls">
-    <label for="grid_size">Grid Size (10-30):</label>
-    <input id="grid_size" type="range" name="grid_size" min="10" max="30" value="10">
-
-    <label for="mine_frequency">Mine Frequency (0.1-0.9):</label>
-    <input id="mine_frequency" type="range" name="mine_frequency" min="1" max="9" value="1.5">
+    <div class="grid_set">
+      <label for="grid_size">Grid Size:</label>
+      <input id="grid_size" type="range" name="grid_size" min="10" max="30" value="10">
+      <h3 class="grid_counter">10</h3>
+    </div>
+    <div class="mine_set">
+      <label for="mine_frequency">Mine Frequency:</label>
+      <input id="mine_frequency" type="range" name="mine_frequency" min="1" max="9" value="1.5">
+      <h3 class="mine_counter">0.15</h3>
+    </div>
   </div>
   <table>
     <tbody id="minesweeper">
