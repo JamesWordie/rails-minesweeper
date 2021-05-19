@@ -3,7 +3,7 @@
 const GRID = 15;
 const MINE_FREQUENCY = 0.2;
 
-//
+// function that returns the result of the querySelecotr for all adjacent cells
 const surrounding = (td, offsetX, offsetY) => {
   const column = td.cellIndex;
   const row = td.parentElement.rowIndex;
@@ -11,6 +11,7 @@ const surrounding = (td, offsetX, offsetY) => {
 }
 
 // function to search the surrounding cells for mines
+// only returns 1 if n exists and n has the class of has mine
 const increaseAdjacent = (td, offsetX, offsetY) => {
   const n = surrounding(td, offsetX, offsetY);
   if (n && n.classList.contains('has-mine')) {
@@ -19,7 +20,7 @@ const increaseAdjacent = (td, offsetX, offsetY) => {
   return 0;
 }
 
-//
+// iterates over every adjacent cell, incrementing mines if a mine is found adjacent
 const open = (square) => {
   let mines = 0;
 
@@ -30,7 +31,7 @@ const open = (square) => {
       }
     }
   }
-
+  // depending on the number of mines found it either opens the cell/ add a class or remove unopened
   if (mines === 0) {
     square.classList.add('opened');
   } else {
@@ -39,6 +40,7 @@ const open = (square) => {
   }
   square.classList.remove('unopened');
 
+  // iterating over adjacent cells to find if any near mines and this is where the multiple cells can be opneded at once
   if (mines === 0) {
     for (let i = -1; i <= 1; i += 1) {
       for (let j = -1; j <= 1; j += 1) {
