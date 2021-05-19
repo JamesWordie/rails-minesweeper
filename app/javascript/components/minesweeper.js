@@ -2,17 +2,17 @@ const gridSlider = document.querySelector('.controls #grid_size');
 const mineSlider = document.querySelector('.controls #mine_frequency');
 
 // function that returns the result of the querySelector for all adjacent cells
-const surrounding = (td, offsetX, offsetY) => {
+const surrounding = (td, X, Y) => {
   const column = td.cellIndex;
   const row = td.parentElement.rowIndex;
-  return document.querySelector(`[data-column="${column + offsetX}"][data-row="${row + offsetY}"]`);
+  return document.querySelector(`[data-column="${column + X}"][data-row="${row + Y}"]`);
 }
 
 // function to search the surrounding cells for mines
 // only returns 1 if n exists and n has the class of has mine
-const increaseAdjacent = (td, offsetX, offsetY) => {
-  const n = surrounding(td, offsetX, offsetY);
-  if (n && n.classList.contains('has-mine')) {
+const increaseAdjacent = (td, X, Y) => {
+  const n = surrounding(td, X, Y);
+  if (n && n.classList.contains('mine-in-cell')) {
     return 1;
   }
   return 0;
@@ -22,10 +22,10 @@ const increaseAdjacent = (td, offsetX, offsetY) => {
 const open = (square) => {
   let mines = 0;
 
-  for (let i = -1; i <= 1; i += 1) {
-    for (let j = -1; j <= 1; j += 1) {
-      if (i !== 0 || j !== 0) {
-        mines += increaseAdjacent(square, i, j);
+  for (let x = -1; x <= 1; x += 1) {
+    for (let y = -1; y <= 1; y += 1) {
+      if (x !== 0 || y !== 0) {
+        mines += increaseAdjacent(square, x, y);
       }
     }
   }
@@ -40,10 +40,10 @@ const open = (square) => {
 
   // iterating over adjacent cells to find if any near mines and this is where the multiple cells can be opneded at once
   if (mines === 0) {
-    for (let i = -1; i <= 1; i += 1) {
-      for (let j = -1; j <= 1; j += 1) {
-        if (i !== 0 || j !== 0) {
-          const n = surrounding(square, i, j);
+    for (let x = -1; x <= 1; x += 1) {
+      for (let y = -1; y <= 1; y += 1) {
+        if (x !== 0 || y !== 0) {
+          const n = surrounding(square, x, y);
           if (n && n.classList.contains('unopened')) {
             open(n);
           }
@@ -58,9 +58,9 @@ const open = (square) => {
 // function to open a square either returning you hit a mine or you open the tile
 const openSquare = () => {
   const square = event.currentTarget;
-  if (square.classList.contains('has-mine')) {
-    document.querySelectorAll('.has-mine').forEach((cell) => {
-      cell.classList.remove('has-mine', 'unopened');
+  if (square.classList.contains('mine-in-cell')) {
+    document.querySelectorAll('.mine-in-cell').forEach((cell) => {
+      cell.classList.remove('mine-in-cell', 'unopened');
       cell.classList.add('mine');
     });
     alert('You Lost ☹️!');
@@ -103,7 +103,7 @@ const events = () => {
     td.dataset.row = td.parentElement.rowIndex;
 
     if (Math.random() <= MINE_FREQUENCY) {
-      td.classList.add('has-mine');
+      td.classList.add('mine-in-cell');
     };
 
     td.addEventListener('click', openSquare);
