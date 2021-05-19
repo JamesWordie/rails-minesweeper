@@ -1,9 +1,7 @@
-// defining the grid size and frequency of mines
-// add the option once working for user input to choose frequnecy and size (number or slider - js30 tutorial)
-let GRID = 15;
-let MINE_FREQUENCY = 0.2;
+const gridSlider = document.querySelector('.controls #grid_size');
+const mineSlider = document.querySelector('.controls #mine_frequency');
 
-// function that returns the result of the querySelecotr for all adjacent cells
+// function that returns the result of the querySelector for all adjacent cells
 const surrounding = (td, offsetX, offsetY) => {
   const column = td.cellIndex;
   const row = td.parentElement.rowIndex;
@@ -82,6 +80,8 @@ const flagSquare = (event) => {
 
 // make the grid using javascript, inputted into the table html
 const makeGrid = () => {
+  let GRID = gridSlider.value;
+
   const minesweeper = document.querySelector('#minesweeper');
   for (let x = 0; x < GRID; x += 1) {
     const row = document.createElement('tr');
@@ -96,6 +96,8 @@ const makeGrid = () => {
 
 // function to set the dataset row and column of each cell, also has event listeners for click and flagging
 const events = () => {
+  let MINE_FREQUENCY = (mineSlider.value/10);
+
   document.querySelectorAll('#minesweeper td').forEach((td) => {
     td.dataset.column = td.cellIndex;
     td.dataset.row = td.parentElement.rowIndex;
@@ -109,37 +111,19 @@ const events = () => {
   });
 }
 
-const buttons = document.querySelectorAll('.buttons button');
-
-function pageAction() {
-  if (this.name === 'start') {
-    this.classList.add('disabled');
-
-  } if (this.name === 'reset') {
-    window.location.reload();
-  }
+function setGridSize() {
+  let GRID = this.value;
+  return GRID;
 };
 
-buttons.forEach((button) => {
-  button.addEventListener('click', pageAction);
-});
-
-function handleChange() {
-  let GRID = 10;
-  let MINE_FREQUENCY = 0.15;
-  if (this.name === 'grid_size') {
-    GRID = this.value;
-  }
-  if (this.name === 'mine_frequency') {
-    MINE_FREQUENCY = this.value/10;
-  }
-  alert(`grid size = ${GRID}, mine frequency = ${MINE_FREQUENCY}`);
+function setMineFrequency() {
+  let MINE_FREQUENCY = (this.value / 10);
+  return MINE_FREQUENCY;
 };
 
-const controls = document.querySelectorAll('.controls input');
+//event listener on the slider inputs to set the grid size and mine frequency
+gridSlider.addEventListener('change', setGridSize);
 
-controls.forEach((input) => {
-  input.addEventListener('change', handleChange);
-});
+mineSlider.addEventListener('change', setMineFrequency);
 
 export { makeGrid }

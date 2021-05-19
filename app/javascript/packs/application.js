@@ -28,5 +28,17 @@ import { makeGrid } from '../components/minesweeper';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  makeGrid();
+  function pageAction() {
+    if (this.name === 'start') {
+      makeGrid();
+      this.classList.add('.disabled');
+    } if (this.name === 'reset') {
+      window.location.reload();
+    }
+  };
+
+  const buttons = document.querySelectorAll('.buttons button');
+  buttons.forEach((button) => {
+    button.addEventListener('click', pageAction);
+  });
 });
