@@ -1,0 +1,36 @@
+.footer-basic {
+  padding-top: 20px;
+  background-color: lightslategrey;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.footer-basic .social {
+  padding-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  a {
+    font-size: 24px;
+    display: inline-block;
+    text-align: center;
+    margin: 0 80px;
+    color: inherit;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer i {
+  color: white;
+}
+
+.footer i:hover {
+  color: black;
+}
+
