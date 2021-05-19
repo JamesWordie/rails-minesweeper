@@ -1,7 +1,7 @@
 // defining the grid size and frequency of mines
 // add the option once working for user input to choose frequnecy and size (number or slider - js30 tutorial)
-const GRID = 15;
-const MINE_FREQUENCY = 0.2;
+let GRID = 15;
+let MINE_FREQUENCY = 0.2;
 
 // function that returns the result of the querySelecotr for all adjacent cells
 const surrounding = (td, offsetX, offsetY) => {
@@ -108,5 +108,38 @@ const events = () => {
     td.addEventListener('contextmenu', flagSquare);
   });
 }
+
+const buttons = document.querySelectorAll('.buttons button');
+
+function pageAction() {
+  if (this.name === 'start') {
+    this.classList.add('disabled');
+
+  } if (this.name === 'reset') {
+    window.location.reload();
+  }
+};
+
+buttons.forEach((button) => {
+  button.addEventListener('click', pageAction);
+});
+
+function handleChange() {
+  let GRID = 10;
+  let MINE_FREQUENCY = 0.15;
+  if (this.name === 'grid_size') {
+    GRID = this.value;
+  }
+  if (this.name === 'mine_frequency') {
+    MINE_FREQUENCY = this.value/10;
+  }
+  alert(`grid size = ${GRID}, mine frequency = ${MINE_FREQUENCY}`);
+};
+
+const controls = document.querySelectorAll('.controls input');
+
+controls.forEach((input) => {
+  input.addEventListener('change', handleChange);
+});
 
 export { makeGrid }
