@@ -125,7 +125,9 @@ function setMineFrequency() {
 
 //event listener on the slider inputs to set the grid size and mine frequency
 gridSlider.addEventListener('change', setGridSize);
+gridSlider.addEventListener('mousemove', setGridSize);
 
 mineSlider.addEventListener('change', setMineFrequency);
+mineSlider.addEventListener('mousemove', setMineFrequency);
 
 export { makeGrid }

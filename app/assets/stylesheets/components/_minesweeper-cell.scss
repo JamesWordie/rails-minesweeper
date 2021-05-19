@@ -1,0 +1,64 @@
+td.unopened {
+  background: url('https://res.cloudinary.com/dqu728tid/image/upload/v1621361218/unopened.svg');
+  cursor: pointer;
+}
+td.opened {
+  background: url('https://res.cloudinary.com/dqu728tid/image/upload/v1621361218/opened.svg');
+}
+td.flagged {
+  background: url('https://res.cloudinary.com/dqu728tid/image/upload/v1621361218/flag.svg');
+}
+td.question {
+  background: url('https://res.cloudinary.com/dqu728tid/image/upload/v1621361218/question.svg');
+}
+td.mine {
+  background: url('https://res.cloudinary.com/dqu728tid/image/upload/v1621361219/mine.png');
+}
+td.mine-neighbour-1 {
+  text-align: center;
+  font-size: 2rem;
+  color: #0000FF;
+  font-weight: 800;
+}
+td.mine-neighbour-2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #008200;
+  font-weight: 800;
+}
+td.mine-neighbour-3 {
+  text-align: center;
+  font-size: 2rem;
+  color: #FF0000;
+  font-weight: 800;
+}
+td.mine-neighbour-4 {
+  text-align: center;
+  font-size: 2rem;
+  color: #000084;
+  font-weight: 800;
+}
+td.mine-neighbour-5 {
+  text-align: center;
+  font-size: 2rem;
+  color: #840000;
+  font-weight: 800;
+}
+td.mine-neighbour-6 {
+  text-align: center;
+  font-size: 2rem;
+  color: #008284;
+  font-weight: 800;
+}
+td.mine-neighbour-7 {
+  text-align: center;
+  font-size: 2rem;
+  color: #840084;
+  font-weight: 800;
+}
+td.mine-neighbour-8 {
+  text-align: center;
+  font-size: 2rem;
+  color: #757575;
+  font-weight: 800;
+}
