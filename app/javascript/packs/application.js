@@ -39,6 +39,6 @@ document.addEventListener('turbolinks:load', () => {
 
   const buttons = document.querySelectorAll('.buttons button');
   buttons.forEach((button) => {
-    button.addEventListener('click', pageAction);
+    button.addEventListener('click', pageAction, { once: true });
   });
 });

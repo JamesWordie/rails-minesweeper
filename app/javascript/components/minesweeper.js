@@ -118,8 +118,8 @@ const events = () => {
       td.classList.add('mine-in-cell');
     };
 
-    td.addEventListener('click', openSquare);
-    td.addEventListener('contextmenu', flagSquare);
+    td.addEventListener('click', openSquare, { once: true });
+    td.addEventListener('contextmenu', flagSquare, { once: true });
   });
 }
 
